@@ -9,10 +9,10 @@
 import UIKit
 
 /// 内存缓存
-class Cache: NSObject, NSCacheDelegate {
+public class Cache: NSObject, NSCacheDelegate {
     
     ///单例对象
-    static let share = Cache()
+    public static let share = Cache()
 
     ///NSCache
     private lazy var cache:NSCache<AnyObject, AnyObject> = {

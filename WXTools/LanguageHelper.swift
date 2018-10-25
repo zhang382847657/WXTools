@@ -10,17 +10,17 @@ import UIKit
 
 
 /// 国际化工具类
-class LanguageHelper: NSObject {
+public class LanguageHelper: NSObject {
     
     /// 缓存国际化对应的KEY
     private let kLanguageHelperUserLanguage = "kLanguageHelperUserLanguage"
 
     /// 存储当前语言
     private let def = UserDefaults.standard
-    var bundle : Bundle?
+    public var bundle : Bundle?
     
     /// 单例
-    static let shareInstance : LanguageHelper = {
+    public static let shareInstance : LanguageHelper = {
         
         let shared = LanguageHelper()
         var string:String = shared.def.value(forKey: shared.kLanguageHelperUserLanguage) as? String ?? Locale.preferredLanguages.first!
@@ -40,7 +40,7 @@ class LanguageHelper: NSObject {
     
     
     /// 通过国际化得到对应的字符串
-    class func getString(key:String) -> String{
+    public class func getString(key:String) -> String{
         let bundle = LanguageHelper.shareInstance.bundle
         let str = bundle?.localizedString(forKey: key, value: nil, table: nil)
         return str!
@@ -50,7 +50,7 @@ class LanguageHelper: NSObject {
     /// 重新设置当前语言类型
     ///
     /// - Parameter langeuage: 语言类型  en 英语  zh-Hans 简体汉语
-    func setLanguage(langeuage:String) {
+    public func setLanguage(langeuage:String) {
         let path = Bundle.main.path(forResource:langeuage , ofType: "lproj")
         bundle = Bundle(path: path!)
         def.set(langeuage, forKey: kLanguageHelperUserLanguage)
@@ -59,7 +59,7 @@ class LanguageHelper: NSObject {
     
     
     /// 跟随系统语言
-    func resetSystemLanguage(){
+    public func resetSystemLanguage(){
         def.removeObject(forKey: kLanguageHelperUserLanguage)
         def.synchronize()
         var string:String = Locale.preferredLanguages.first!
@@ -73,7 +73,7 @@ class LanguageHelper: NSObject {
     /// 得到当前用户选择的语言
     ///
     /// - Returns: 返回当前语言  如果返回为nil，则代表跟随系统语言
-    func getCurrentUserLanguage() -> String? {
+    public func getCurrentUserLanguage() -> String? {
         if var currentLanguage = def.value(forKey: kLanguageHelperUserLanguage) as? String {
             currentLanguage = currentLanguage.replacingOccurrences(of: "-CN", with: "")
             currentLanguage = currentLanguage.replacingOccurrences(of: "-US", with: "")

@@ -11,12 +11,12 @@ import CoreText
 
 
 /// 字体图标工具类
-class IconFont: NSObject {
+public class IconFont: NSObject {
     
-    var code:String       //标准解析格式 比如："\u{a62b}"
-    var name:String       //字体图标库名字
-    var labelText:String //可以直接赋值给UILabel,以系统字体大小为基准
-    var iconImage:UIImage! //生成一个一般的iconImge  如果需要其他大小的可以自己调整， 使用第二个初始化中代码段。
+    public var code:String       //标准解析格式 比如："\u{a62b}"
+    public var name:String       //字体图标库名字
+    public var labelText:String //可以直接赋值给UILabel,以系统字体大小为基准
+    public var iconImage:UIImage! //生成一个一般的iconImge  如果需要其他大小的可以自己调整， 使用第二个初始化中代码段。
     
     ///初始化图标
     /// - important : fontsize可通过外部font的size调整,而且必须设置UILabel的font,否则无法正常显示。比如：
@@ -61,7 +61,7 @@ class IconFont: NSObject {
     /// - important :图片大小由iconFont的fontSize自动计算决定。建议UIImageView大小参考打印值,这样的图片显示效果是最好的。
     /// - parameter fontSize:图标（字体大小）
     /// - parameter color:图标的颜色
-    func iconFontImage(fontSize:CGFloat, color:UIColor) -> UIImage {
+    public func iconFontImage(fontSize:CGFloat, color:UIColor) -> UIImage {
         //计算iconFont的宽高
         let nscode = code as NSString
         let rect = nscode.boundingRect(with:CGSize(width: 0.0, height: 0.0) , options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: fontSize)], context: nil)
@@ -84,7 +84,7 @@ class IconFont: NSObject {
 
 
 //MARK: - 扩展UILable
-extension UILabel{
+public extension UILabel{
     
     ///直接通过UILabel加载iconfont
     /// - parameter iconfont: 图标的编码标准格式如："\u{a626}"
