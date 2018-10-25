@@ -16,7 +16,7 @@ public class FileOption: NSObject {
     /// - createDocumenFailed: 创建文件夹失败
     /// - readFileFailed: 读取文件失败
     /// - writeFileFailed: 写入文件失败
-    enum FileOptionError: Error {
+    public enum FileOptionError: Error {
         case createDocumenFailed
         case readFileFailed
         case writeFileFailed

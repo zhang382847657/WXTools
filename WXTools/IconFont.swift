@@ -23,7 +23,7 @@ public class IconFont: NSObject {
     /// - label.font = UIFont.init(name: "IconFont", size: UIFont.systemFontSize)
     /// - parameter code: 标准解析格式，比如："\u{a62b}"
     /// - parameter name:图标的中文名
-    init(code:String, name:String) {
+    public init(code:String, name:String) {
         self.code = code
         self.name = name
         //为UILabel使用的做准备
@@ -39,7 +39,7 @@ public class IconFont: NSObject {
     /// - parameter name:图标的中文名
     /// - parameter fontSize:图标（字体大小）
     /// - parameter color:图标的颜色
-    convenience init(code:String, name:String, fontSize:CGFloat, color:UIColor){
+    public convenience init(code:String, name:String, fontSize:CGFloat, color:UIColor){
         self.init(code: code, name: name)
         //计算文本rect
         let nscode = code as NSString
@@ -88,7 +88,7 @@ public extension UILabel{
     
     ///直接通过UILabel加载iconfont
     /// - parameter iconfont: 图标的编码标准格式如："\u{a626}"
-    convenience init(iconfont code:String, name:String, frame: CGRect ,fontSize:CGFloat) {
+    public convenience init(iconfont code:String, name:String, frame: CGRect ,fontSize:CGFloat) {
         self.init(frame: frame)
         self.text = code
         self.font = UIFont(name: name, size: fontSize)
